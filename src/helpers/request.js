@@ -2,8 +2,7 @@ import axios from 'axios';
 import { Message } from 'element-ui';
 
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-// axios.defaults.baseURL = "//blog-serve.hunger-valley.com"
-axios.defaults.baseURL = '//localhost:8080';
+axios.defaults.baseURL = '//blog-server.hunger-valley.com';
 
 export default function request(url, type = 'GET', data = {}) {
   return new Promise((resolve, reject) => {
@@ -22,10 +21,10 @@ export default function request(url, type = 'GET', data = {}) {
 
     axios(option)
       .then(res => {
-        console.log(res);
+        console.log(res.data);
         if (res.data.status === 'ok') {
-          if (res.data.data.token) {
-            localStorage.token = res.data.data.token;
+          if (res.data.token) {
+            localStorage.token = res.data.token;
           }
           resolve(res.data);
         } else {

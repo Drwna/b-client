@@ -1,22 +1,27 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,
-      <br />
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>
-      .
-    </p>
-    <h3>Installed CLI Plugins</h3>
+    <div>
+      <el-button @click="onClick1">默认按钮</el-button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: 'HelloWorld',
   props: {
     msg: String,
+  },
+  methods: {
+    onClick1() {
+      this.$alert('这是一段内容', '标题名称', {
+        confirmButtonText: '确定',
+        callback: action => {
+          console.log(1);
+        },
+      });
+    },
   },
 };
 </script>

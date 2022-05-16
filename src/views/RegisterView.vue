@@ -1,21 +1,39 @@
 <template>
   <div id="register">
     <h4>用户名</h4>
-    <el-input v-model="username" placeholder="用户名"></el-input>
-    <p class="error">当前用户名已注册</p>
+    <input v-model="username" placeholder="用户名" />
     <h4>密码</h4>
-    <el-input v-model="password" type="password" placeholder="密码"></el-input>
-    <p class="error">当前用户名已注册</p>
-    <el-button size="medium">立即注册</el-button>
+    <input v-model="password" type="password" placeholder="密码" @keyup.enter="onRegister" />
+    <el-button size="medium" @click="onRegister">立即注册</el-button>
     <p class="notice">
       已有账号？
-      <router-link to="/login">立即登录</router-link>
+      <router-link to="/login" @click="onRegister">立即登录</router-link>
     </p>
   </div>
 </template>
 
 <script>
-export default {};
+import { mapActions } from 'vuex';
+
+export default {
+  data() {
+    return {
+      username: '',
+      password: '',
+    };
+  },
+
+  methods: {
+    ...mapActions(['register']),
+
+    onRegister() {
+      this.register({
+        name: this.name,
+        password: this.password,
+      });
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

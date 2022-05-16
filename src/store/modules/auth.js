@@ -5,7 +5,10 @@ const state = {
   isLogin: false,
 };
 
-const getters = {};
+const getters = {
+  user: state => state.user,
+  isLogin: state => state.isLogin,
+};
 
 const mutations = {
   setUser(state, payload) {
@@ -33,10 +36,9 @@ const actions = {
   },
 
   async logout({ commit }) {
-    let res = await auth.logout();
+    await auth.logout();
     commit('setUser', { user: null });
     commit('setLogin', { isLogin: false });
-    return res.data;
   },
 
   async checkLogin({ commit, state }) {

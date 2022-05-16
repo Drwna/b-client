@@ -1,50 +1,55 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import HomeView from "@/views/HomeView.vue";
-import LoginView from "@/views/LoginView.vue";
-import RegisterView from "@/views/RegisterView.vue";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import HomeView from '@/views/HomeView.vue';
+import LoginView from '@/views/LoginView.vue';
+import RegisterView from '@/views/RegisterView.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    name: "home",
+    path: '/',
+    name: 'home',
     component: HomeView,
   },
   {
-    path: "/login",
-    name: "login",
+    path: '/login',
+    name: 'login',
     component: LoginView,
   },
   {
-    path: "/register",
-    name: "register",
+    path: '/register',
+    name: 'register',
     component: RegisterView,
   },
   {
-    path: "/edit",
-    name: "edit",
-    component: () => import("@/views/EditView.vue"),
+    path: '/user',
+    name: 'user',
+    component: () => import('@/views/UserView.vue'),
   },
   {
-    path: "/create",
-    name: "create",
-    component: () => import("@/views/CreateView.vue"),
+    path: '/edit',
+    name: 'edit',
+    component: () => import('@/views/EditView.vue'),
   },
   {
-    path: "/detail",
-    name: "detail",
-    component: () => import("@/views/DetailView.vue"),
+    path: '/create',
+    name: 'create',
+    component: () => import('@/views/CreateView.vue'),
   },
   {
-    path: "/my",
-    name: "my",
-    component: () => import("@/views/MyView.vue"),
+    path: '/detail',
+    name: 'detail',
+    component: () => import('@/views/DetailView.vue'),
   },
   {
-    path: "*",
-    redirect: "/",
+    path: '/my',
+    name: 'my',
+    component: () => import('@/views/MyView.vue'),
+  },
+  {
+    path: '*',
+    redirect: '/',
   },
   // {
   //   path: '/about',

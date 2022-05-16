@@ -40,7 +40,6 @@ export default {
 
   #main {
     grid-area: main;
-    border: 1px solid black;
   }
 
   #footer {

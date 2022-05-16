@@ -22,7 +22,6 @@ export default {
   },
 
   methods: {
-
     onLogin() {
       this.$store
         .dispatch('login', {
@@ -30,7 +29,8 @@ export default {
           password: this.password,
         })
         .then(() => {
-          this.$router.push('/');
+          // 跳转到之前的页面
+          this.$router.push({ path: this.$route.query.redirect || '/' });
         });
     },
   },

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import HomeView from '@/views/HomeView.vue';
 import LoginView from '@/views/LoginView.vue';
 import RegisterView from '@/views/RegisterView.vue';
+import store from '@/store';
 
 Vue.use(VueRouter);
 
@@ -23,29 +24,32 @@ const routes = [
     component: RegisterView,
   },
   {
-    path: '/user',
+    path: '/user/:userId',
     name: 'user',
     component: () => import('@/views/UserView.vue'),
   },
   {
-    path: '/edit',
+    path: '/edit/:blogId',
     name: 'edit',
     component: () => import('@/views/EditView.vue'),
+    meta: { requiresAuth: true },
   },
   {
     path: '/create',
     name: 'create',
     component: () => import('@/views/CreateView.vue'),
+    meta: { requiresAuth: true },
   },
   {
     path: '/detail',
-    name: 'detail',
+    name: 'detail/:blogId',
     component: () => import('@/views/DetailView.vue'),
   },
   {
     path: '/my',
     name: 'my',
     component: () => import('@/views/MyView.vue'),
+    meta: { requiresAuth: true },
   },
   {
     path: '*',
@@ -63,6 +67,26 @@ const routes = [
 
 const router = new VueRouter({
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    store.dispatch('checkLogin').then(() => {
+      if (!isLogin) {
+        console.log('not login');
+        next({
+          path: '/login',
+          query: { redirect: to.fullPath },
+        });
+      } else {
+        next();
+      }
+    });
+  } else {
+    next(); // 确保一定要调用 next()
+  }
 });
 
 export default router;

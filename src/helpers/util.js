@@ -1,8 +1,8 @@
 function friendlyDate(dateStr) {
-  let dateObj = typeof dateStr === 'object' ? dateStr : new Date(dateStr);
-  let time = dateObj.getTime();
-  let now = new Date().getTime();
-  let space = now - time;
+  const dateObj = typeof dateStr === 'object' ? dateStr : new Date(dateStr);
+  const time = dateObj.getTime();
+  const now = new Date().getTime();
+  const space = now - time;
   let str = '';
 
   switch (true) {

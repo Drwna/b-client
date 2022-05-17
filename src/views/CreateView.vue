@@ -42,7 +42,7 @@ export default {
         })
         .then(res => {
           this.$message.success(res.msg);
-          this.$router.push({ path: `/blog/${res.data.id}` });
+          this.$router.push({ path: `/detail/${res.data.id}` });
         });
     },
   },

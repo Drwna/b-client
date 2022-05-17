@@ -14,7 +14,7 @@
       </router-link>
     </section>
     <section class="pagination">
-      <el-pagination layout="prev, pager, next" :total="total" @current-change="onPageChange" :current-page="currentPage"></el-pagination>
+      <el-pagination layout="prev, pager, next" :total="total" @current-change="onPageChange" :current-page="page"></el-pagination>
     </section>
   </div>
 </template>
@@ -28,7 +28,6 @@ export default {
       blogs: [],
       total: 0,
       page: 1,
-      currentPage: 1,
     };
   },
   created() {
@@ -37,7 +36,6 @@ export default {
       this.blogs = res.data;
       this.total = res.total;
       this.page = res.page;
-      this.currentPage = res.page;
     });
   },
 

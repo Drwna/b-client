@@ -12,9 +12,15 @@ body,
   height: 100%;
 }
 
-a{
+a {
   text-decoration: none;
   color: #333;
+}
+
+.pagination {
+  display: grid;
+  justify-items: center;
+  margin-bottom: 30px;
 }
 
 .el-button {

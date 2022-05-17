@@ -146,10 +146,5 @@ export default {
       }
     }
   }
-  .pagination {
-    display: grid;
-    justify-items: center;
-    margin-bottom: 30px;
-  }
 }
 </style>

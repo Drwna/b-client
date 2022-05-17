@@ -28,8 +28,10 @@ export default {
 
     onRegister() {
       this.register({
-        name: this.name,
+        username: this.username,
         password: this.password,
+      }).then(() => {
+        this.$router.push({ path: '/' });
       });
     },
   },
